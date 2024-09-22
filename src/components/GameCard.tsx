@@ -1,6 +1,7 @@
 import { Game } from "@/hooks/useGames";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import PlatformIconList from "./PlatformIconList";
+import CriticScoreBadge from "./CriticScoreBadge";
 
 interface Props {
   game: Game;
@@ -18,9 +19,12 @@ const GameCard = ({ game }: Props) => {
       </CardHeader>
       <CardContent className="p-4">
         <CardTitle className="text-2xl font-bold mb-4">{game.name}</CardTitle>
-        <PlatformIconList
-          platforms={game.parent_platforms.map(({ platform }) => platform)}
-        />
+        <div className="flex justify-between items-center">
+          <PlatformIconList
+            platforms={game.parent_platforms.map(({ platform }) => platform)}
+          />
+          <CriticScoreBadge score={game.metacritic} />
+        </div>
       </CardContent>
     </Card>
   );
