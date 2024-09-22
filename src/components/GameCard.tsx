@@ -2,6 +2,7 @@ import { Game } from "@/hooks/useGames";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import PlatformIconList from "./PlatformIconList";
 import CriticScoreBadge from "./CriticScoreBadge";
+import getCroppedImage from "@/services/imageUrl";
 
 interface Props {
   game: Game;
@@ -13,7 +14,7 @@ const GameCard = ({ game }: Props) => {
       <CardHeader className="p-0">
         <img
           className="object-cover h-[180px]"
-          src={game.background_image}
+          src={getCroppedImage(game.background_image)}
           alt="Game Thumbnail"
         />
       </CardHeader>
