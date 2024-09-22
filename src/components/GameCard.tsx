@@ -1,5 +1,6 @@
 import { Game } from "@/hooks/useGames";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
+import PlatformIconList from "./PlatformIconList";
 
 interface Props {
   game: Game;
@@ -16,7 +17,10 @@ const GameCard = ({ game }: Props) => {
         />
       </CardHeader>
       <CardContent className="p-4">
-        <CardTitle>{game.name}</CardTitle>
+        <CardTitle className="text-2xl font-bold mb-4">{game.name}</CardTitle>
+        <PlatformIconList
+          platforms={game.parent_platforms.map(({ platform }) => platform)}
+        />
       </CardContent>
     </Card>
   );
