@@ -30,8 +30,8 @@ const PlatformIconList = ({ platforms }: Props) => {
 
   return (
     <div className="flex items-center gap-2 text-muted-foreground">
-      {icons.map((Icon) => (
-        <Icon className="" />
+      {icons.map((Icon, index) => (
+        <Icon key={index} />
       ))}
     </div>
   );
