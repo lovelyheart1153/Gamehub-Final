@@ -3,7 +3,9 @@ import getCroppedImage from "@/services/imageUrl";
 import { Button } from "./ui/button";
 
 const GenreList = () => {
-  const { data: genres, error, loading } = useGenres();
+  const { data: genres, error } = useGenres();
+
+  if (error) return null;
 
   return (
     <div className="p-4">
@@ -18,7 +20,7 @@ const GenreList = () => {
           />
           <Button
             variant="link"
-            className="font-semibold font-lg text-muted-foreground active:text-foreground active:font-bold"
+            className="font-semibold font-lg text-muted-foreground"
           >
             {genre.name} ({genre.games_count})
           </Button>
