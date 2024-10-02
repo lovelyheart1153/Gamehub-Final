@@ -28,6 +28,8 @@ export function PlatformSelector() {
     value: platform.slug,
   }));
 
+  console.log(platforms);
+
   if (!platforms) return null;
 
   const items = [{ label: "All Platforms", value: "all" }, ...platforms];
