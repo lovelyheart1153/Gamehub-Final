@@ -16,7 +16,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import usePlatforms from "@/hooks/usePlatforms";
+import usePlatforms from "@/entities/usePlatforms";
 
 export function PlatformSelector() {
   const { data } = usePlatforms();

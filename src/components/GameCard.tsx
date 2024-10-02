@@ -1,4 +1,4 @@
-import { Game } from "@/hooks/useGames";
+import { Game } from "../entities/Game";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import PlatformIconList from "./PlatformIconList";
 import CriticScoreBadge from "./CriticScoreBadge";
