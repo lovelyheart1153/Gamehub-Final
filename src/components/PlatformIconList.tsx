@@ -1,5 +1,13 @@
-import { SiWindows11, SiPlaystation, SiXbox } from "react-icons/si";
-import { FaApple } from "react-icons/fa";
+import {
+  SiWindows11,
+  SiPlaystation,
+  SiXbox,
+  SiAtari,
+  SiCommodore,
+  SiSega,
+  SiD3Dotjs,
+} from "react-icons/si";
+import { FaApple, FaGamepad } from "react-icons/fa";
 import { FcLinux } from "react-icons/fc";
 import { BsAndroid2 } from "react-icons/bs";
 import { MdOutlinePhoneIphone } from "react-icons/md";
@@ -24,6 +32,11 @@ const PlatformIconList = ({ platforms }: Props) => {
     web: FcGlobe,
     android: BsAndroid2,
     nintendo: SiNintendogamecube,
+    atari: SiAtari,
+    "commodore-amiga": SiCommodore,
+    sega: SiSega,
+    "3do": SiD3Dotjs,
+    "neo-geo": FaGamepad,
   };
 
   const icons = platforms.map((platform) => iconMap[platform.slug]);

@@ -1,6 +1,6 @@
 export interface GameQuery {
   genreId?: number | null;
-  platformId?: number | null;
+  platformId?: string | null;
   sortOrder?: string | null;
   searchText?: string | null;
 }
@@ -12,7 +12,7 @@ interface GenreQuery {
 
 interface PlatformQuery {
   type: "FILTER_BY_PLATFORM";
-  platformId: number;
+  platformId: string | null;
 }
 
 interface SortOrder {

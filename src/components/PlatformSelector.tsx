@@ -17,22 +17,23 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import usePlatforms from "@/entities/usePlatforms";
+import useGameQuery from "@/hooks/useGameQuery";
 
 export function PlatformSelector() {
   const { data } = usePlatforms();
+  const { dispatch } = useGameQuery();
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
 
   const platforms = data?.results.map((platform) => ({
     label: platform.name,
     value: platform.slug,
+    id: platform.id,
   }));
-
-  console.log(platforms);
 
   if (!platforms) return null;
 
-  const items = [{ label: "All Platforms", value: "all" }, ...platforms];
+  // const items = [{ label: "All Platforms", value: "all" }, ...platforms];
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -44,8 +45,8 @@ export function PlatformSelector() {
           className="w-full justify-between"
         >
           {value
-            ? items.find((item) => item.value === value)?.label
-            : "Select a Platform..."}
+            ? platforms.find((platform) => platform.value === value)?.label
+            : "Filter By: All"}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
@@ -55,22 +56,43 @@ export function PlatformSelector() {
           <CommandList>
             <CommandEmpty>No platform found.</CommandEmpty>
             <CommandGroup>
-              {items.map((item) => (
+              <CommandItem
+                // className="pl-8"
+                value="All Platfroms"
+                onSelect={() => {
+                  setValue("");
+                  dispatch({ type: "FILTER_BY_PLATFORM", platformId: null });
+                  setOpen(false);
+                }}
+              >
+                <Check
+                  className={cn(
+                    "mr-2 h-4 w-4",
+                    value === "" ? "opacity-100" : "opacity-0"
+                  )}
+                />
+                All Platforms
+              </CommandItem>
+              {platforms.map((platform) => (
                 <CommandItem
-                  key={item.value}
-                  value={item.value}
+                  key={platform.value}
+                  value={platform.value}
                   onSelect={(currentValue) => {
                     setValue(currentValue === value ? "" : currentValue);
+                    dispatch({
+                      type: "FILTER_BY_PLATFORM",
+                      platformId: platform.id.toString(),
+                    });
                     setOpen(false);
                   }}
                 >
                   <Check
                     className={cn(
                       "mr-2 h-4 w-4",
-                      value === item.value ? "opacity-100" : "opacity-0"
+                      value === platform.value ? "opacity-100" : "opacity-0"
                     )}
                   />
-                  {item.label}
+                  {platform.label}
                 </CommandItem>
               ))}
             </CommandGroup>
