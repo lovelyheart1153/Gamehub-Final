@@ -7,4 +7,23 @@ const axiosInstance = axios.create({
   },
 });
 
-export default axiosInstance;
+export interface FetchResponse<T> {
+  count: number;
+  next: string | null;
+  results: T[];
+}
+
+class APIClient<T> {
+  endpoint: string;
+
+  constructor(endpoint: string) {
+    this.endpoint = endpoint;
+  }
+
+  getAll = () =>
+    axiosInstance.get<FetchResponse<T>>(this.endpoint).then((res) => res.data);
+}
+
+export default APIClient;
+
+// export default axiosInstance;

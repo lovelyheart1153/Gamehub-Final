@@ -11,7 +11,7 @@ const GenreList = () => {
     <div className="p-4">
       <h2 className="text-3xl font-bold mb-4">Genres</h2>
 
-      {genres.map((genre) => (
+      {genres?.results.map((genre) => (
         <div key={genre.id} className="flex items-center">
           <img
             src={getCroppedImage(genre.image_background)}

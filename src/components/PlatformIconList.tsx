@@ -29,7 +29,7 @@ const PlatformIconList = ({ platforms }: Props) => {
   const icons = platforms.map((platform) => iconMap[platform.slug]);
 
   return (
-    <div className="flex items-center gap-2 text-muted-foreground">
+    <div className="flex items-center gap-2 text-muted-foreground flex-wrap">
       {icons.map((Icon, index) => (
         <Icon key={index} />
       ))}
