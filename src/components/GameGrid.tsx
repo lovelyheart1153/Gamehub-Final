@@ -4,11 +4,13 @@ import useGames from "@/hooks/useGames";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 import { Loader2 } from "lucide-react";
+import useGameQuery from "@/hooks/useGameQuery";
 
 const GameGrid = () => {
+  const { gameQuery } = useGameQuery();
   const skeletons = Array.from({ length: 20 }, (_, index) => index);
   const { data, error, isLoading, fetchNextPage, isFetchingNextPage } =
-    useGames();
+    useGames(gameQuery);
 
   const { ref, inView } = useInView();
 

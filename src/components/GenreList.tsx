@@ -1,9 +1,12 @@
 import useGenres from "@/hooks/useGenres";
 import getCroppedImage from "@/services/imageUrl";
 import { Button } from "./ui/button";
+import useGameQuery from "@/hooks/useGameQuery";
 
 const GenreList = () => {
   const { data: genres, error } = useGenres();
+  const { dispatch, gameQuery } = useGameQuery();
+  console.log(gameQuery);
 
   if (error) return null;
 
@@ -19,6 +22,9 @@ const GenreList = () => {
             className="size-6 object-cover rounded"
           />
           <Button
+            onClick={() =>
+              dispatch({ type: "FILTER_BY_GENRE", genreId: genre.id })
+            }
             variant="link"
             className="font-semibold font-lg text-muted-foreground"
           >

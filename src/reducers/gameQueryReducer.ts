@@ -2,6 +2,7 @@ export interface GameQuery {
   genreId?: number | null;
   platformId?: number | null;
   sortOrder?: string | null;
+  searchText?: string | null;
 }
 
 interface GenreQuery {
@@ -19,7 +20,16 @@ interface SortOrder {
   sortOrder: string;
 }
 
-export type GameQueryAction = GenreQuery | PlatformQuery | SortOrder;
+interface SearchQuery {
+  type: "SEARCH";
+  searchText: string;
+}
+
+export type GameQueryAction =
+  | GenreQuery
+  | PlatformQuery
+  | SortOrder
+  | SearchQuery;
 
 const gameQueryReducer = (gameQuery: GameQuery, action: GameQueryAction) => {
   if (action.type === "FILTER_BY_GENRE") {
@@ -30,6 +40,9 @@ const gameQueryReducer = (gameQuery: GameQuery, action: GameQueryAction) => {
   }
   if (action.type === "SORT") {
     return { ...gameQuery, sortOrder: action.sortOrder };
+  }
+  if (action.type === "SEARCH") {
+    return { ...gameQuery, searchText: action.searchText };
   }
 
   return gameQuery;
