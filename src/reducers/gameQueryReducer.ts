@@ -42,7 +42,7 @@ const gameQueryReducer = (gameQuery: GameQuery, action: GameQueryAction) => {
     return { ...gameQuery, sortOrder: action.sortOrder };
   }
   if (action.type === "SEARCH") {
-    return { ...gameQuery, searchText: action.searchText };
+    return { searchText: action.searchText };
   }
 
   return gameQuery;
