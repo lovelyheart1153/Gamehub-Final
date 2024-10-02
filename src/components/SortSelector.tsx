@@ -16,9 +16,10 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import useGameQuery from "@/hooks/useGameQuery";
 
 const items = [
-  { label: "Relevance", value: "relevance" },
+  { label: "Relevance", value: "" },
   { label: "Date Added", value: "-added" },
   { label: "Name", value: "name" },
   { label: "Release Date", value: "-released" },
@@ -27,6 +28,7 @@ const items = [
 ];
 
 const SortSelector = () => {
+  const { dispatch } = useGameQuery();
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
 
@@ -41,15 +43,15 @@ const SortSelector = () => {
         >
           {value
             ? items.find((item) => item.value === value)?.label
-            : "Select a Platform..."}
+            : "Sort By: Relevance"}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
       <PopoverContent align="start" className="w-[200px] p-0">
         <Command>
-          <CommandInput placeholder="Search platform..." />
+          <CommandInput placeholder="Search Sort Order..." />
           <CommandList>
-            <CommandEmpty>No platform found.</CommandEmpty>
+            <CommandEmpty>No record found.</CommandEmpty>
             <CommandGroup>
               {items.map((item) => (
                 <CommandItem
@@ -57,6 +59,7 @@ const SortSelector = () => {
                   value={item.value}
                   onSelect={(currentValue) => {
                     setValue(currentValue === value ? "" : currentValue);
+                    dispatch({ type: "SORT", sortOrder: item.value });
                     setOpen(false);
                   }}
                 >
