@@ -5,8 +5,7 @@ import useGameQuery from "@/hooks/useGameQuery";
 
 const GenreList = () => {
   const { data: genres, error } = useGenres();
-  const { dispatch, gameQuery } = useGameQuery();
-  console.log(gameQuery);
+  const { dispatch } = useGameQuery();
 
   if (error) return null;
 

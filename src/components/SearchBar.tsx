@@ -13,8 +13,8 @@ const SearchBar = () => {
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        if (ref.current?.value)
-          dispatch({ type: "SEARCH", searchText: ref.current.value });
+        if (!ref.current?.value) return;
+        dispatch({ type: "SEARCH", searchText: ref.current.value });
         navigate("/");
       }}
       className="relative"

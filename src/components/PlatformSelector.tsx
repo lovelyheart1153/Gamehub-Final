@@ -16,7 +16,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import usePlatforms from "@/entities/usePlatforms";
+import usePlatforms from "@/hooks/usePlatforms";
 import useGameQuery from "@/hooks/useGameQuery";
 
 export function PlatformSelector() {
