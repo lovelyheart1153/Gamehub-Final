@@ -26,7 +26,7 @@ const GameCard = ({ game }: Props) => {
         </CardTitle>
         <div className="flex justify-between items-center">
           <PlatformIconList
-            platforms={game.parent_platforms.map(({ platform }) => platform)}
+            platforms={game?.parent_platforms?.map(({ platform }) => platform)}
           />
           <CriticScoreBadge score={game.metacritic} />
         </div>

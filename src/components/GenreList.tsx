@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 
 const GenreList = () => {
   const { data: genres, error } = useGenres();
-  const { dispatch } = useGameQuery();
+  const { dispatch, gameQuery } = useGameQuery();
   const [selectedGenre, setSelectedGenre] = useState<number | null>(null);
 
   if (error) return null;
@@ -31,7 +31,10 @@ const GenreList = () => {
             variant="link"
             className={cn(
               "font-semibold font-lg text-muted-foreground",
-              genre.id === selectedGenre && "font-extrabold text-foreground"
+              genre.id === selectedGenre &&
+                gameQuery.searchText &&
+                gameQuery.genreId &&
+                "font-extrabold text-foreground"
             )}
           >
             {genre.name} ({genre.games_count})

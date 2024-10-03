@@ -39,6 +39,7 @@ const PlatformIconList = ({ platforms }: Props) => {
     "neo-geo": FaGamepad,
   };
 
+  if (!platforms || !platforms.length) return null;
   const icons = platforms.map((platform) => iconMap[platform.slug]);
 
   return (
