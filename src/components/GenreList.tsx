@@ -2,10 +2,13 @@ import useGenres from "@/hooks/useGenres";
 import getCroppedImage from "@/services/imageUrl";
 import { Button } from "./ui/button";
 import useGameQuery from "@/hooks/useGameQuery";
+import { useState } from "react";
+import { cn } from "@/lib/utils";
 
 const GenreList = () => {
   const { data: genres, error } = useGenres();
   const { dispatch } = useGameQuery();
+  const [selectedGenre, setSelectedGenre] = useState<number | null>(null);
 
   if (error) return null;
 
@@ -21,11 +24,15 @@ const GenreList = () => {
             className="size-6 object-cover rounded"
           />
           <Button
-            onClick={() =>
-              dispatch({ type: "FILTER_BY_GENRE", genreId: genre.id })
-            }
+            onClick={() => {
+              setSelectedGenre(genre.id);
+              dispatch({ type: "FILTER_BY_GENRE", genreId: genre.id });
+            }}
             variant="link"
-            className="font-semibold font-lg text-muted-foreground"
+            className={cn(
+              "font-semibold font-lg text-muted-foreground",
+              genre.id === selectedGenre && "font-extrabold text-foreground"
+            )}
           >
             {genre.name} ({genre.games_count})
           </Button>
