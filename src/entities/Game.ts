@@ -1,4 +1,5 @@
-import { Platform } from "./useGames";
+import { Genre } from "./Genre";
+import { Platform } from "../entities/Platform";
 
 export interface Game {
   id: number;
@@ -10,4 +11,6 @@ export interface Game {
   metacritic: number;
   rating_top: number;
   slug: string;
+  description_raw: string;
+  genres: Genre[];
 }
