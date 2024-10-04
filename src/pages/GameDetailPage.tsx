@@ -14,7 +14,7 @@ const GameDetailPage = () => {
   if (!game || isLoading) return null;
 
   return (
-    <div className="pt-[70px] px-4 max-w-[1400px] mx-auto grid sm:grid-cols-2 gap-4">
+    <div className="pt-[70px] px-4 max-w-[1400px] mx-auto grid sm:grid-cols-2 gap-4 pb-8">
       <div className="">
         <div className="mb-8">
           <h2 className="text-2xl sm:text-4xl font-bold mb-2">{game?.name}</h2>

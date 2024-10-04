@@ -31,10 +31,7 @@ const GenreList = () => {
             variant="link"
             className={cn(
               "font-semibold font-lg text-muted-foreground",
-              genre.id === selectedGenre &&
-                gameQuery.searchText &&
-                gameQuery.genreId &&
-                "font-extrabold text-foreground"
+              genre.id === selectedGenre && "font-extrabold text-foreground"
             )}
           >
             {genre.name} ({genre.games_count})

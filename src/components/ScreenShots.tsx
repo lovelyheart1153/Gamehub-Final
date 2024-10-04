@@ -11,7 +11,7 @@ const ScreenShots = ({ gameId }: Props) => {
     <div className="grid lg:grid-cols-2 gap-4">
       {data?.results.map((screenshot) => (
         <img
-          className="rounded"
+          className="rounded hover:scale-105 transition"
           key={screenshot.id}
           src={screenshot.image}
           alt="Game Screenshot"
