@@ -22,7 +22,7 @@ const GameCard = ({ game }: Props) => {
       </CardHeader>
       <CardContent className="p-4">
         <CardTitle className="text-2xl font-bold mb-4">
-          <Link to={`/games/${game.slug}`}>{game.name}</Link>
+          <Link to={`/games/${game.slug}/${game.id}`}>{game.name}</Link>
         </CardTitle>
         <div className="flex justify-between items-center">
           <PlatformIconList

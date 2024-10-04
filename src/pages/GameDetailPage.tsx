@@ -2,12 +2,17 @@ import CriticScoreBadge from "@/components/CriticScoreBadge";
 import Entry from "@/components/Entry";
 import GameAttributes from "@/components/GameAttributes";
 import GameDescription from "@/components/GameDescription";
+import GameTrailer from "@/components/GameTrailer";
 import useGame from "@/hooks/useGame";
+// import useTrailers from "@/hooks/useTrailers";
 import { useParams } from "react-router-dom";
 
 const GameDetailPage = () => {
   const params = useParams();
+
   const { data: game, isLoading } = useGame(params.slug!);
+  // const { data } = useTrailers(parseInt(params.gameId!));
+  // console.log(data?.results);
 
   if (!game || isLoading) return null;
 
@@ -41,6 +46,8 @@ const GameDetailPage = () => {
           ))}
         </GameAttributes>
       </div>
+
+      <GameTrailer gameId={parseInt(params.gameId!)} />
     </div>
   );
 };
