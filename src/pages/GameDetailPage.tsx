@@ -3,6 +3,7 @@ import Entry from "@/components/Entry";
 import GameAttributes from "@/components/GameAttributes";
 import GameDescription from "@/components/GameDescription";
 import GameTrailer from "@/components/GameTrailer";
+import ScreenShots from "@/components/ScreenShots";
 import useGame from "@/hooks/useGame";
 // import useTrailers from "@/hooks/useTrailers";
 import { useParams } from "react-router-dom";
@@ -48,6 +49,8 @@ const GameDetailPage = () => {
       </div>
 
       <GameTrailer gameId={parseInt(params.gameId!)} />
+
+      <ScreenShots gameId={parseInt(params.gameId!)} />
     </div>
   );
 };
